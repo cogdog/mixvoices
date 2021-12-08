@@ -10,12 +10,9 @@ To skip all the explanation, just explore it at https://cogdog.github.io/mixvoic
 
 This was created as a small bit for the [OEG Voices Podcast](https://voices.oeglobal.org/) I manage and produce for Open Education Global. I have had this idea for a long time to create of those [audio mixes popularized in the Mailchimp ads for the Serial Podcast](https://qz.com/298094/how-mailchimps-irresistible-serial-ad-became-the-years-biggest-marketing-win/).
 
-I ended up writing he text and asking my colleagues at OEGlobal to record their version, and I manually edited it together. This was the opening used for the first year and a half of the show.
+I ended up writing he text and asking my colleagues at OEGlobal to record their version, and I manually edited it together. [This was the opening](https://podcast.oeglobal.org/wp-content/uploads/2020/08/oeg-voices-intro-v2.mp3) used for the first year and a half of the show.
 
-<audio controls>
-<source src="https://podcast.oeglobal.org/wp-content/uploads/2020/08/oeg-voices-intro-v2.mp3">
-Your browser does not support the audio element.
-</audio>
+
 
 This was fine, but I always wanted to do something... more dynamic and random. I put out [a call in our community space asking for people to record the segment](https://connect.oeglobal.org/t/contribute-your-voice-to-oeg-voices-opening-segment/3213) and share it with me (reply there or via email). This is the source content
 
