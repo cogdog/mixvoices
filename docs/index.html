@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<title>Random Voices</title>
+
+	<!-- let the styling commence -->
+	<style>
+		
+	    .jumbotron  {
+	    	opacity: 0.8;
+	    	margin-bottom:1em;
+	    	min-height: 4em;
+	    }
+	    
+	    /* longer generated messages might need smaller font size */
+	    #sitename {
+	    	font-size:4vw;
+	    }
+	    
+	    .hide {
+	    	display:none;
+	    }
+	    
+		details {
+		  margin-bottom: 2rem;
+		  padding: .5rem 1rem;
+		}
+
+		summary {
+		  cursor: pointer;
+		}
+
+		summary > * {
+		  display: inline;
+		}
+
+		summary em {
+			font-size: 80%;
+			float: right;
+		}
+		
+		#mixlist {
+			opacity: 0.8;
+			background-color:#000;
+		}	    
+
+	    #footer {
+			color:#fff;
+			font-size: 0.8em;
+			line-height:1.1;
+		}	
+		
+		#footer a, #main, pre {
+			color:#fff;
+		}
+	</style>
+
+
+</head>
+<body>
+
+  <div class="jumbotron">
+	  <h1 id="sitenane" class="display-4 text-center">Random OEG Voices Intro Generator</h1>
+	  <p>This is an experiment to dynamically generate an randomized opening introduction sequence for the <a href="http://voices.oeglobal.org/" target="_blank">OEG Voices podcast</a> from a collection of recordings shared by individuals, each divided into 14 segments. Do you want to add your voice to the mix? <a href="https://connect.oeglobal.org/t/contribute-your-voice-to-oeg-voices-opening-segment/3213/" target="_blank">Record and add yours in OEG Connect</a>.</p>
+  
+  	<div  class="container-fluid text-center">
+  		<button type="button" class="btn btn-primary btn-lg" id="voicenew">Make New</button>
+  		<button type="button" class="btn btn-primary btn-lg hide" id="voiceplay">
+  			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+</svg> 
+			Play
+		</button>
+ 
+   		<button type="button" class="btn btn-primary btn-lg hide" id="voicepause">
+  			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"/>
+</svg>
+			Pause
+		</button>
+ 		
+ 		<p id="speaking">&nbsp;</p>
+	</div>
+	
+  </div>
+	
+	<div id="main" class="container-fluid">
+	
+	<div id="credits"></div>
+	
+	<div id="mixlist" class="hide">
+		<details>
+		<summary>For the Mixer</summary>
+		The text below can be saved to a file <code>voices.txt</code> and used by a mixmaster to run via command line.<br /><br />
+		<code>ffmpeg -f concat -safe 0 -i voices.txt -c copy voicesmix.mp3</code><br/><br />
+		
+		<pre id="voicelist"></pre>
+    
+	</details>
+	</div>
+
+	
+
+		
+	</div><!-- #main -->
+	
+		<div id="footer" class="container-fluid text-center">
+		<p>
+		<!-- background image attribution -->
+		
+		Background image podcast logo by Mario Badilla mixed with <a href="https://flickr.com/photos/cogdog/5560625860">2011/365/84 On The Air</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a><br />
+			<!-- code credit, thanks for keeping -->
+			code by <a href="http://cog.dog/"> @cogdog</a> made for &bull; <a href="https://github.com/cogdog/mixoefvoices">available on github</a>
+		</p>
+	</div>
+
+	
+	
+
+<!--  JavaScript libs 
+	   jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.1.18/jquery.backstretch.min.js" integrity="sha512-bXc1hnpHIf7iKIkKlTX4x0A0zwTiD/FjGTy7rxUERPZIkHgznXrN/2qipZuKp/M3MIcVIdjF4siFugoIc2fL0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script type="text/javascript">
+
+	// backstrech the background image -->
+	 $.backstretch("background.jpg");
+	 
+	var people = [
+		{"id" : "ajita" , "name" : "Ajita Deshmukh", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]}, 
+		{"id" : "shannon" , "name" : "Shannon Smith", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]}, 
+		{"id" : "judith" , "name" : "Judith Sebesta", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
+		{"id" : "rajiv" , "name" : "Rajiv Janghiana", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
+		{"id" : "alex" , "name" : "Alex Enkerli", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
+		{"id" : "lena" , "name" : "Lena Patterson", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
+		{"id" : "lori-beth" , "name" : "Lori-Beth Larsen", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
+		{"id" : "alan" , "name" : "Alan Levine", "segments" : [2]},
+		{"id" : "marcela" , "name" : "Marcela Morales", "segments" : [2]},
+		{"id" : "paul" , "name" : "Paul Stacey", "segments" : [2]},
+		{"id" : "igor" , "name" : "Igor Lesko", "segments" : [2]}
+	];
+	
+	var voices = [];
+	var speakers = [];
+	var i = -1;
+	var paused = false;
+
+	// general purpose function to return a random index to input array
+	function getrandom(array) {
+	  return Math.floor(Math.random() * array.length)
+	}
+
+	function mixaudio(max) {
+		let alltracks = [];
+		let track2 = [];
+		let credits = [];
+		let ffmpegtxt = '# OEG Voices Randomized Intro created ' + new Date() + "\n"
+		paused = false;
+		speakers = [];
+
+		
+		for  (let i = 1; i <= max; i++) {
+			// find all people that have this in their segments
+			inthemix = people.filter(inthemix => inthemix.segments.includes(i));
+			
+			// special case to get 3 unique tracks for segment 2
+			if (i==2) {
+			
+				// clever code to get 3 random elements 
+				// h/t https://stackoverflow.com/a/38571132/2418186
+				let track2 = inthemix.sort(() => .5 - Math.random()).slice(0,3);
+				
+				for  (let j = 0; j < track2.length; j++) {
+					// add the track file name, relative
+					alltracks.push(new Audio('segment-'+ i + '/' + track2[j].id + '-' + i + '.mp3'));
+			
+					// append to credits if not already there, add to speakers list too
+					if (!credits.includes(track2[j].name) ) credits.push(track2[j].name);
+					speakers.push(track2[j].name);
+					
+					ffmpegtxt += 'file \'' + 'segment-'+ i + '/' + track2[j].id + '-' + i + ".mp3'\n";
+				}
+			
+			} else {
+			
+				// grab a person in these results
+				randomperson = getrandom(inthemix);
+			
+				// add the track file name, relative
+				alltracks.push(new Audio('segment-'+ i + '/' + people[randomperson].id + '-' + i + '.mp3'));
+			
+				// append to credits if not already there, add to speakers list too
+				if (!credits.includes(people[randomperson].name) ) credits.push(people[randomperson].name);
+				speakers.push(people[randomperson].name);
+				
+				ffmpegtxt += 'file \'' + 'segment-'+ i + '/' + people[randomperson].id + '-' + i + ".mp3'\n";
+			}		
+		}
+			
+		$( "#credits" ).html('<h2>Voice Credits</h2><p>' + credits.sort().join(", ") + '</p>');
+		$( "#voicelist" ).text(ffmpegtxt);
+		$( "#speaking" ).html('&nbsp;');
+		
+		return (alltracks);
+	}
+
+	function getVoices() {
+	
+		// pause if playing
+		if (i>-1 && !paused) {
+			voices[i].pause();
+			paused=true;
+		}
+		
+		// reset counter
+		i = -1;
+		voices = mixaudio(14);
+
+		// change button name and show buttons
+		$("#voicenew").html('Make Another');
+		$("#voiceplay").show();
+		$("#voicepause").show();
+		$("#mixlist").show();
+
+	}
+
+	function playVoices() {
+		if (paused) {
+			paused = false;
+		} else {
+			
+			i++;
+			if (i == voices.length) {
+				$("#speaking").html('&nbsp;');
+				return;
+			}
+			voices[i].addEventListener('ended', playVoices);
+			$("#speaking").html('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speaker" viewBox="0 0 16 16"><path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/><path d="M8 4.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5zM8 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-3.5 1.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg> <em>' + speakers[i] + '</em>');
+		}
+		
+		voices[i].play();
+	}
+	
+	function pauseVoices() {
+		voices[i].pause();
+		paused = true;
+
+	}
+	
+	// set up the generate button
+	$(document).ready(function(){	
+		
+		$( "#voicenew" ).click(function() {
+			// Generate and play voices
+			getVoices();
+			
+		});	
+		
+		$( "#voiceplay" ).click(function() {
+			// Generate and play voices
+			playVoices();
+			
+		});	
+		
+		$( "#voicepause" ).click(function() {
+			// Generate and play voices
+			pauseVoices();
+			
+		});	
+					
+	});//ready
+
+</script>
+
+</body>
+</html>
