@@ -5,6 +5,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 	<title>Random Voices</title>
 
 	<!-- let the styling commence -->
@@ -69,19 +70,10 @@
   
   	<div  class="container-fluid text-center">
   		<button type="button" class="btn btn-primary btn-lg" id="voicenew">Make New</button>
-  		<button type="button" class="btn btn-primary btn-lg hide" id="voiceplay">
-  			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
-</svg> 
-			Play
+  		<button type="button" class="btn btn-primary btn-lg hide" id="voiceplay"><i class="bi bi-play-circle"></i>Play
 		</button>
  
-   		<button type="button" class="btn btn-primary btn-lg hide" id="voicepause">
-  			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause-circle-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"/>
-</svg>
-			Pause
+   		<button type="button" class="btn btn-primary btn-lg hide" id="voicepause"><i class="bi bi-pause-circle-fill"></i> Pause
 		</button>
  		
  		<p id="speaking">&nbsp;</p>
@@ -96,7 +88,7 @@
 	<div id="mixlist" class="hide">
 		<details>
 		<summary>For the Mixer</summary>
-		The text below can be saved to a file <code>voices.txt</code> and used by a mixmaster to run via command line.<br /><br />
+		The text below can be saved to a file <code>voices.txt</code> and used by a mixmaster who has all the source audio (aka @cogdog) to run via command line. Try <a href="#" id="downloadmix" download="voices.txt"><i class="bi bi-download"></i> downloading a version</a> and if it works email it, or a copy of the text below, to <code>podcast@oeglobal.org</code> and we will use it a future episode.<br /><br />
 		<code>ffmpeg -f concat -safe 0 -i voices.txt -c copy voicesmix.mp3</code><br/><br />
 		
 		<pre id="voicelist"></pre>
@@ -117,6 +109,7 @@
 			<!-- code credit, thanks for keeping -->
 			code by <a href="http://cog.dog/"> @cogdog</a> and <a href="https://github.com/cogdog/mixvoices">available on github</a>
 		</p>
+		<p id="namelist"></p>
 	</div>
 
 	
@@ -158,22 +151,31 @@
 	function getrandom(array) {
 	  return Math.floor(Math.random() * array.length)
 	}
+	
+	function getAllNames() {
+		let allnames = [];
+		for  (let m = 0; m < people.length ; m++) {
+			allnames.push(people[m].name);
+		}
+		
+		$( "#namelist" ).html('<p>Thanks to all voice contributors <strong>' + allnames.join("</strong>, <strong>") + '</strong></p>');
+	}
 
 	function mixaudio(max) {
 		let alltracks = [];
 		let track2 = [];
 		let credits = [];
-		let ffmpegtxt = '# OEG Voices Randomized Intro created ' + new Date() + "\n"
+		let ffmpegtxt = '# OEG Voices Random Intro created ' + new Date() + "\n"
 		paused = false;
 		speakers = [];
 
 		
-		for  (let i = 1; i <= max; i++) {
+		for  (let m = 1; m <= max; m++) {
 			// find all people that have this in their segments
-			inthemix = people.filter(inthemix => inthemix.segments.includes(i));
+			inthemix = people.filter(inthemix => inthemix.segments.includes(m));
 			
 			// special case to get 3 unique tracks for segment 2
-			if (i==2) {
+			if (m==2) {
 			
 				// clever code to get 3 random elements 
 				// h/t https://stackoverflow.com/a/38571132/2418186
@@ -181,13 +183,13 @@
 				
 				for  (let j = 0; j < track2.length; j++) {
 					// add the track file name, relative
-					alltracks.push(new Audio('segment-'+ i + '/' + track2[j].id + '-' + i + '.mp3'));
+					alltracks.push(new Audio('segment-'+ m + '/' + track2[j].id + '-' + m + '.mp3'));
 			
 					// append to credits if not already there, add to speakers list too
 					if (!credits.includes(track2[j].name) ) credits.push(track2[j].name);
 					speakers.push(track2[j].name);
 					
-					ffmpegtxt += 'file \'' + 'segment-'+ i + '/' + track2[j].id + '-' + i + ".mp3'\n";
+					ffmpegtxt += 'file \'' + 'segment-'+ m + '/' + track2[j].id + '-' + m + ".mp3'\n";
 				}
 			
 			} else {
@@ -196,18 +198,19 @@
 				randomperson = getrandom(inthemix);
 			
 				// add the track file name, relative
-				alltracks.push(new Audio('segment-'+ i + '/' + people[randomperson].id + '-' + i + '.mp3'));
+				alltracks.push(new Audio('segment-'+ m + '/' + people[randomperson].id + '-' + m + '.mp3'));
 			
 				// append to credits if not already there, add to speakers list too
 				if (!credits.includes(people[randomperson].name) ) credits.push(people[randomperson].name);
 				speakers.push(people[randomperson].name);
 				
-				ffmpegtxt += 'file \'' + 'segment-'+ i + '/' + people[randomperson].id + '-' + i + ".mp3'\n";
+				ffmpegtxt += 'file \'' + 'segment-'+ m + '/' + people[randomperson].id + '-' + m + ".mp3'\n";
 			}		
 		}
 			
-		$( "#credits" ).html('<h2>Voice Credits</h2><p>' + credits.join(", ") + '</p>');
+		$( "#credits" ).html('<h2>Voice Credits For This Mix</h2><p>' + credits.join(", ") + '</p>');
 		$( "#voicelist" ).text(ffmpegtxt);
+		$( "#downloadmix").attr("href", "data:text/plain;charset=UTF-8," + encodeURIComponent(ffmpegtxt));
 		$( "#speaking" ).html('&nbsp;');
 		
 		return (alltracks);
@@ -244,7 +247,7 @@
 				return;
 			}
 			voices[i].addEventListener('ended', playVoices);
-			$("#speaking").html('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speaker" viewBox="0 0 16 16"><path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/><path d="M8 4.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5zM8 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-3.5 1.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg> <em>' + speakers[i] + '</em>');
+			$("#speaking").html('<i class="bi bi-speaker"></i> <em>' + speakers[i] + '</em>');
 		}
 		
 		voices[i].play();
@@ -258,6 +261,7 @@
 	
 	// set up the generate button
 	$(document).ready(function(){	
+		getAllNames();
 		
 		$( "#voicenew" ).click(function() {
 			// Generate and play voices
