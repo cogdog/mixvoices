@@ -73,7 +73,7 @@
 
   <div class="jumbotron">
 	  <h1 id="sitenane" class="display-4 text-center">Random OEG Voices Intro Generator</h1>
-	  <p>This is an experiment to dynamically generate an randomized opening introduction sequence for the <a href="http://voices.oeglobal.org/" target="_blank">OEG Voices podcast</a> from a collection of recordings shared by individuals, each divided into 14 segments. Do you want to add your voice to the mix? <a href="https://connect.oeglobal.org/t/contribute-your-voice-to-oeg-voices-opening-segment/3213/" target="_blank"><i class="bi bi-mic-fill"></i> Record and add yours in OEG Connect</a>.</p>
+	  <p>This is an experiment to dynamically generate a randomized opening introduction sequence for the <a href="http://voices.oeglobal.org/" target="_blank">OEG Voices podcast</a> from a collection of recordings shared by individuals, each divided into 14 segments (modeled after the <a href="https://qz.com/298094/how-mailchimps-irresistible-serial-ad-became-the-years-biggest-marketing-win/">Mailchimp ad for Serial</a>). Do you want to add your voice to the mix? <a href="https://connect.oeglobal.org/t/contribute-your-voice-to-oeg-voices-opening-segment/3213/" target="_blank"><i class="bi bi-mic-fill"></i> Record and add yours in OEG Connect</a>.</p>
   
   	<div  class="container-fluid text-center">
   		<button type="button" class="btn btn-primary btn-lg" id="voicenew">Make New</button>
@@ -198,13 +198,13 @@
 				
 				for  (let j = 0; j < track2.length; j++) {
 					// add the track file name, relative
-					alltracks.push(new Audio('segment-'+ m + '/' + track2[j].id + '-' + m + '.mp3'));
+					alltracks.push(new Audio('audio/segment-'+ m + '/' + track2[j].id + '-' + m + '.mp3'));
 			
 					// append to credits if not already there, add to speakers list too
 					if (!credits.includes(track2[j].name) ) credits.push(track2[j].name);
 					speakers.push(track2[j].name);
 					
-					ffmpegtxt += 'file \'' + 'segment-'+ m + '/' + track2[j].id + '-' + m + ".mp3'\n";
+					ffmpegtxt += 'file \'' + 'audio/segment-'+ m + '/' + track2[j].id + '-' + m + ".mp3'\n";
 				}
 			
 			} else {
@@ -213,13 +213,13 @@
 				randomperson = getrandom(inthemix);
 			
 				// add the track file name, relative
-				alltracks.push(new Audio('segment-'+ m + '/' + randomperson.id + '-' + m + '.mp3'));
+				alltracks.push(new Audio('audio/segment-'+ m + '/' + randomperson.id + '-' + m + '.mp3'));
 			
 				// append to credits if not already there, add to speakers list too
 				if (!credits.includes( randomperson.name) ) credits.push(randomperson.name);
 				speakers.push(randomperson.name);
 				
-				ffmpegtxt += 'file \'' + 'segment-'+ m + '/' + randomperson.id + '-' + m + ".mp3'\n";
+				ffmpegtxt += 'file \'' + 'audio/segment-'+ m + '/' + randomperson.id + '-' + m + ".mp3'\n";
 			}		
 		}
 			
@@ -265,7 +265,7 @@
 			$("#speaking").html('<i class="bi bi-speaker"></i> <em>' + speakers[sndx] + '</em>');
 		}
 		
-		voices[i].play();
+		voices[sndx].play();
 	}
 	
 	function pauseVoices() {
