@@ -83,7 +83,7 @@
    		<button type="button" class="btn btn-primary btn-lg hide" id="voicepause"><i class="bi bi-pause-circle-fill"></i> Pause
 		</button>
  		
- 		<p id="speaking">&nbsp;</p>
+ 		<p id="speaking">Start by making a mix...</p>
 	</div>
 	
   </div>
@@ -178,14 +178,19 @@
 	}
 
 	function mixaudio(max) {
+		$( "#speaking" ).text('Mixing...');
 		let alltracks = [];
 		let track2 = [];
 		let credits = [];
-		let ffmpegtxt = '# OEG Voices Random Intro created ' + new Date() + "\n"
+		let ffmpegtxt = '# OEG Voices Random Intro created ' + new Date() + "\n" + 
+		                '# Run from directory containing \'audio\'' + "\n" + 
+		                '# ffmpeg -f concat -safe 0 -i voices.txt -c copy voicemix.mp3' + "\n" ;
 		paused = false;
 		speakers = [];
 
 		for  (let m = 1; m <= max; m++) {
+			
+			$( "#speaking" ).text('Mixing segment ' + m);
 			// find all people that have this in their segments
 			inthemix = people.filter(inthemix => inthemix.segments.includes(m));
 			
@@ -226,7 +231,7 @@
 		$( "#credits" ).html('<h2>Voice Credits For This Mix</h2><p>' + credits.join(", ") + '</p>');
 		$( "#voicelist" ).text(ffmpegtxt);
 		$( "#downloadmix").attr("href", "data:text/plain;charset=UTF-8," + encodeURIComponent(ffmpegtxt));
-		$( "#speaking" ).html('&nbsp;');
+		$( "#speaking" ).html('Mix complete! Click <strong>Play</strong> to listen');
 		
 		return (alltracks);
 	}
@@ -258,7 +263,7 @@
 			
 			sndx++;
 			if (sndx == voices.length) {
-				$("#speaking").html('&nbsp;');
+				$("#speaking").html('Done! Mix another?');
 				return;
 			}
 			voices[sndx].addEventListener('ended', playVoices);
