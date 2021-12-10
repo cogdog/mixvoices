@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -144,17 +145,27 @@
 		{"id" : "marcela" , "name" : "Marcela Morales", "segments" : [2]},
 		{"id" : "una" , "name" : "Una Daly", "segments" : [2]},
 		{"id" : "paul" , "name" : "Paul Stacey", "segments" : [2]},
-		{"id" : "igor" , "name" : "Igor Lesko", "segments" : [2]}
+		{"id" : "igor" , "name" : "Igor Lesko", "segments" : [2]},
+		{"id" : "kristin" , "name" : "Kristin Hirschmann", "segments" : [1,2,3,4,5,6,7]},
+		{"id" : "joran" , "name" : "Jöran Muuß-Merholz", "segments" : [8,9,10,11,12,13,14]},
 	];
 	
 	var voices = [];
 	var speakers = [];
-	var i = -1;
+	var sndx = -1;
 	var paused = false;
 
-	// general purpose function to return a random index to input array
-	function getrandom(array) {
-	  return Math.floor(Math.random() * array.length)
+	// 
+	function getrandom( array ) {
+		// Fisher-Yates Shuffle h/t https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj
+	    for (let i = array.length - 1; i > 0; i--) {
+    		const j = Math.floor(Math.random() * (i + 1));
+   			const temp = array[i];
+    		array[i] = array[j];
+    		array[j] = temp;
+ 		 }
+ 		 // return the last element of the shuffle array
+ 		 return array.pop();
 	}
 	
 	function getAllNames() {
@@ -163,7 +174,7 @@
 			allnames.push(people[m].name);
 		}
 		
-		$( "#namelist" ).html('<p>Thanks to all voice contributors <strong>' + allnames.join("</strong>, <strong>") + '</strong></p>');
+		$( "#namelist" ).html('<p>Thanks to all voice contributors <strong>' + allnames.sort().join("</strong>, <strong>") + '</strong></p>');
 	}
 
 	function mixaudio(max) {
@@ -174,7 +185,6 @@
 		paused = false;
 		speakers = [];
 
-		
 		for  (let m = 1; m <= max; m++) {
 			// find all people that have this in their segments
 			inthemix = people.filter(inthemix => inthemix.segments.includes(m));
@@ -203,13 +213,13 @@
 				randomperson = getrandom(inthemix);
 			
 				// add the track file name, relative
-				alltracks.push(new Audio('segment-'+ m + '/' + people[randomperson].id + '-' + m + '.mp3'));
+				alltracks.push(new Audio('segment-'+ m + '/' + randomperson.id + '-' + m + '.mp3'));
 			
 				// append to credits if not already there, add to speakers list too
-				if (!credits.includes(people[randomperson].name) ) credits.push(people[randomperson].name);
-				speakers.push(people[randomperson].name);
+				if (!credits.includes( randomperson.name) ) credits.push(randomperson.name);
+				speakers.push(randomperson.name);
 				
-				ffmpegtxt += 'file \'' + 'segment-'+ m + '/' + people[randomperson].id + '-' + m + ".mp3'\n";
+				ffmpegtxt += 'file \'' + 'segment-'+ m + '/' + randomperson.id + '-' + m + ".mp3'\n";
 			}		
 		}
 			
@@ -224,13 +234,13 @@
 	function getVoices() {
 	
 		// pause if playing
-		if (i>-1 && !paused) {
-			voices[i].pause();
+		if ( sndx > -1 && !paused) {
+			voices[sndx].pause();
 			paused=true;
 		}
 		
 		// reset counter
-		i = -1;
+		sndx = -1;
 		voices = mixaudio(14);
 
 		// change button name and show buttons
@@ -246,20 +256,20 @@
 			paused = false;
 		} else {
 			
-			i++;
-			if (i == voices.length) {
+			sndx++;
+			if (sndx == voices.length) {
 				$("#speaking").html('&nbsp;');
 				return;
 			}
-			voices[i].addEventListener('ended', playVoices);
-			$("#speaking").html('<i class="bi bi-speaker"></i> <em>' + speakers[i] + '</em>');
+			voices[sndx].addEventListener('ended', playVoices);
+			$("#speaking").html('<i class="bi bi-speaker"></i> <em>' + speakers[sndx] + '</em>');
 		}
 		
 		voices[i].play();
 	}
 	
 	function pauseVoices() {
-		voices[i].pause();
+		voices[sndx].pause();
 		paused = true;
 
 	}
