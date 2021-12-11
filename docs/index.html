@@ -189,8 +189,7 @@
 		speakers = [];
 
 		for  (let m = 1; m <= max; m++) {
-			
-			$( "#speaking" ).text('Mixing segment ' + m);
+
 			// find all people that have this in their segments
 			inthemix = people.filter(inthemix => inthemix.segments.includes(m));
 			
@@ -239,7 +238,7 @@
 	function getVoices() {
 	
 		// pause if playing
-		if ( sndx > -1 && !paused) {
+		if ( sndx > -1 && sndx < voices.length  && !paused) {
 			voices[sndx].pause();
 			paused=true;
 		}
