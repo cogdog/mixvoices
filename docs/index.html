@@ -4,7 +4,9 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+	<title>Random OEG Voices</title>
+
+    <!-- Bootstrap and icons CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     
@@ -13,60 +15,8 @@
           https://thenounproject.com/icon/blender-4436213/ -->
     <link rel="shortcut icon" type="image/png" href="blender.png"/>
     
-	<title>Random Voices</title>
-
 	<!-- let the styling commence -->
-	<style>
-		
-	    .jumbotron  {
-	    	opacity: 0.8;
-	    	margin-bottom:1em;
-	    	min-height: 4em;
-	    }
-	    
-	    /* longer generated messages might need smaller font size */
-	    #sitename {
-	    	font-size:4vw;
-	    }
-	    
-	    .hide {
-	    	display:none;
-	    }
-	    
-		details {
-		  margin-bottom: 2rem;
-		  padding: .5rem 1rem;
-		}
-
-		summary {
-		  cursor: pointer;
-		}
-
-		summary > * {
-		  display: inline;
-		}
-
-		summary em {
-			font-size: 80%;
-			float: right;
-		}
-		
-		#mixlist {
-			opacity: 0.8;
-			background-color:#000;
-		}	    
-
-	    #footer {
-			color:#fff;
-			font-size: 0.8em;
-			line-height:1.1;
-		}	
-		
-		#footer a, #main, pre {
-			color:#fff;
-		}
-	</style>
-
+	<link href="css/style.css" rel="stylesheet">
 
 </head>
 <body>
@@ -112,199 +62,20 @@
 		<!-- background image attribution -->
 		
 		Background image podcast logo by Mario Badilla mixed with <a href="https://flickr.com/photos/cogdog/5560625860">2011/365/84 On The Air</a> flickr photo by <a href="https://flickr.com/people/cogdog">cogdogblog</a> shared under a <a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons (BY) license</a><br />
-			<!-- code credit, thanks for keeping -->
-			code by <a href="http://cog.dog/"> @cogdog</a> and <a href="https://github.com/cogdog/mixvoices">available on github</a>
+		<!-- code credit, thanks for keeping -->
+		code by <a href="http://cog.dog/"> @cogdog</a> and <a href="https://github.com/cogdog/mixvoices">available on github</a>
 		</p>
 		<p id="namelist"></p>
 	</div>
 
-	
-	
-
 <!--  JavaScript libs 
-	   jQuery first, then Popper.js, then Bootstrap JS -->
+	   jQuery first, then Bootstrap JS, and finally Backstretch -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.1.18/jquery.backstretch.min.js" integrity="sha512-bXc1hnpHIf7iKIkKlTX4x0A0zwTiD/FjGTy7rxUERPZIkHgznXrN/2qipZuKp/M3MIcVIdjF4siFugoIc2fL0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script type="text/javascript">
-
-	// backstrech the background image -->
-	 $.backstretch("background.jpg");
-	 
-	var people = [
-		{"id" : "ajita" , "name" : "Ajita Deshmukh", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]}, 
-		{"id" : "shannon" , "name" : "Shannon Smith", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]}, 
-		{"id" : "judith" , "name" : "Judith Sebesta", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
-		{"id" : "rajiv" , "name" : "Rajiv Jhangiani", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
-		{"id" : "alex" , "name" : "Alex Enkerli", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
-		{"id" : "lena" , "name" : "Lena Patterson", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
-		{"id" : "lori-beth" , "name" : "Lori-Beth Larsen", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
-		{"id" : "cynthia" , "name" : "Cynthia Orozco", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
-		{"id" : "shinta" , "name" : "Shinta Hernandez", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
-		{"id" : "alan" , "name" : "Alan Levine", "segments" : [2]},
-		{"id" : "marcela" , "name" : "Marcela Morales", "segments" : [2]},
-		{"id" : "una" , "name" : "Una Daly", "segments" : [2]},
-		{"id" : "paul" , "name" : "Paul Stacey", "segments" : [2]},
-		{"id" : "igor" , "name" : "Igor Lesko", "segments" : [2]},
-		{"id" : "kristin" , "name" : "Kristin Hirschmann", "segments" : [1,2,3,4,5,6,7]},
-		{"id" : "joran" , "name" : "Jöran Muuß-Merholz", "segments" : [8,9,10,11,12,13,14]},
-		{"id" : "kevin" , "name" : "Kevin Hodgson", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
-		{"id" : "isla" , "name" : "Isla Haddow-Flood", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
-	];
-	
-	var voices = [];
-	var speakers = [];
-	var sndx = -1;
-	var paused = false;
-
-	// 
-	function getrandom( array ) {
-		// Fisher-Yates Shuffle h/t https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj
-	    for (let i = array.length - 1; i > 0; i--) {
-    		const j = Math.floor(Math.random() * (i + 1));
-   			const temp = array[i];
-    		array[i] = array[j];
-    		array[j] = temp;
- 		 }
- 		 // return the last element of the shuffle array
- 		 return array.pop();
-	}
-	
-	function getAllNames() {
-		let allnames = [];
-		for  (let m = 0; m < people.length ; m++) {
-			allnames.push(people[m].name);
-		}
-		
-		$( "#namelist" ).html('<p>Thanks to all voice contributors <strong>' + allnames.sort().join("</strong>, <strong>") + '</strong></p>');
-	}
-
-	function mixaudio(max) {
-		$( "#speaking" ).text('Mixing...');
-		let alltracks = [];
-		let track2 = [];
-		let credits = [];
-		let ffmpegtxt = '# OEG Voices Random Intro created ' + new Date() + "\n" + 
-		                '# Run from directory containing \'audio\'' + "\n" + 
-		                '# ffmpeg -f concat -safe 0 -i voices.txt -c copy voicemix.mp3' + "\n" ;
-		paused = false;
-		speakers = [];
-
-		for  (let m = 1; m <= max; m++) {
-
-			// find all people that have this in their segments
-			inthemix = people.filter(inthemix => inthemix.segments.includes(m));
-			
-			// special case to get 3 unique tracks for segment 2
-			if (m==2) {
-			
-				// clever code to get 3 random elements 
-				// h/t https://stackoverflow.com/a/38571132/2418186
-				let track2 = inthemix.sort(() => .5 - Math.random()).slice(0,3);
-				
-				for  (let j = 0; j < track2.length; j++) {
-					// add the track file name, relative
-					alltracks.push(new Audio('audio/segment-'+ m + '/' + track2[j].id + '-' + m + '.mp3'));
-			
-					// append to credits if not already there, add to speakers list too
-					if (!credits.includes(track2[j].name) ) credits.push(track2[j].name);
-					speakers.push(track2[j].name);
-					
-					ffmpegtxt += 'file \'' + 'audio/segment-'+ m + '/' + track2[j].id + '-' + m + ".mp3'\n";
-				}
-			
-			} else {
-			
-				// grab a person in these results
-				randomperson = getrandom(inthemix);
-			
-				// add the track file name, relative
-				alltracks.push(new Audio('audio/segment-'+ m + '/' + randomperson.id + '-' + m + '.mp3'));
-			
-				// append to credits if not already there, add to speakers list too
-				if (!credits.includes( randomperson.name) ) credits.push(randomperson.name);
-				speakers.push(randomperson.name);
-				
-				ffmpegtxt += 'file \'' + 'audio/segment-'+ m + '/' + randomperson.id + '-' + m + ".mp3'\n";
-			}		
-		}
-			
-		$( "#credits" ).html('<h2>Voice Credits For This Mix</h2><p>' + credits.join(", ") + '</p>');
-		$( "#voicelist" ).text(ffmpegtxt);
-		$( "#downloadmix").attr("href", "data:text/plain;charset=UTF-8," + encodeURIComponent(ffmpegtxt));
-		$( "#speaking" ).html('Mix complete! Click <strong>Play</strong> to listen');
-		
-		return (alltracks);
-	}
-
-	function getVoices() {
-	
-		// pause if playing
-		if ( sndx > -1 && sndx < voices.length  && !paused) {
-			voices[sndx].pause();
-			paused=true;
-		}
-		
-		// reset counter
-		sndx = -1;
-		voices = mixaudio(14);
-
-		// change button name and show buttons
-		$("#voicenew").html('Make Another');
-		$("#voiceplay").show();
-		$("#voicepause").show();
-		$("#mixlist").show();
-
-	}
-
-	function playVoices() {
-		if (paused) {
-			paused = false;
-		} else {
-			
-			sndx++;
-			if (sndx == voices.length) {
-				$("#speaking").html('Done! Mix another?');
-				return;
-			}
-			voices[sndx].addEventListener('ended', playVoices);
-			$("#speaking").html('<i class="bi bi-speaker"></i> <em>' + speakers[sndx] + '</em>');
-		}
-		
-		voices[sndx].play();
-	}
-	
-	function pauseVoices() {
-		voices[sndx].pause();
-		paused = true;
-
-	}
-	
-	// set up the generate button
-	$(document).ready(function(){	
-		getAllNames();
-		
-		$( "#voicenew" ).click(function() {
-			// Generate and play voices
-			getVoices();
-			
-		});	
-		
-		$( "#voiceplay" ).click(function() {
-			// Generate and play voices
-			playVoices();
-			
-		});	
-		
-		$( "#voicepause" ).click(function() {
-			// Generate and play voices
-			pauseVoices();
-			
-		});	
-					
-	});//ready
-
-</script>
+    
+    <!-- custom scripts for the mix machine -->
+    <script src="js/mixvoices.js"></script>
 
 </body>
 </html>
