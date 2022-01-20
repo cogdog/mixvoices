@@ -123,6 +123,9 @@ function mixaudio(max) {
 			ffmpegtxt += 'file \'' + 'audio/segment-'+ m + '/' + randomperson.id + '-' + m + ".mp3'\n";
 		}		
 	}
+	
+	// append the credits to the download content
+	ffmpegtxt += '# Voice credits: ' + credits.join(", ");
 		
 	$( "#credits" ).html('<h2>Voice Credits For This Mix</h2><p>' + credits.join(", ") + '</p>');
 	$( "#voicelist" ).text(ffmpegtxt);
