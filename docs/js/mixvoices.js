@@ -209,7 +209,7 @@ function setUpReplay(max) {
 	$( "#credits" ).html('<h2>Voice Credits For This Mix</h2><p>' + credits.join(", ") + '</p>');
 	$( "#voicelist" ).text(ffmpegtxt);
 	$( "#downloadmix").attr("href", "data:text/plain;charset=UTF-8," + encodeURIComponent(ffmpegtxt));
-	$( "#speaking" ).html('Playlist loaded <strong>Play</strong> to listen');
+	$( "#speaking" ).html('Playlist loaded. Click <strong>Play</strong> to listen');
 
 	return (alltracks);
 
