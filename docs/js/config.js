@@ -11,7 +11,7 @@ var people = [
 	{"id" : "cynthia" , "name" : "Cynthia O", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
 	{"id" : "shinta" , "name" : "Shinta H", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
 	{"id" : "alan" , "name" : "Alan L", "segments" : [2]},
-	{"id" : "marcela_e" , "name" : "Marcela M", "segments" : [2]},
+	{"id" : "marcela" , "name" : "Marcela M", "segments" : [2]},
 	{"id" : "una" , "name" : "Una D", "segments" : [2]},
 	{"id" : "paul" , "name" : "Paul S", "segments" : [2]},
 	{"id" : "igor" , "name" : "Igor L", "segments" : [2]},
