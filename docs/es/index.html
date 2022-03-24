@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Voces OEG aleatorias</title>
+	    
+    <!-- Bootstrap and icons CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    
+    <!-- big fan of this favicon 
+          Blender by icon scout CC BY from the Noun Project 
+          https://thenounproject.com/icon/blender-4436213/ -->
+    <link rel="shortcut icon" type="image/png" href="blender.png"/>
+    
+	<!-- let the styling commence -->
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <div class="jumbotron">
+	  <h1 id="sitenane" class="display-4 text-center">Generador de introducción de voces aleatorias OEG</h1>
+	  <p>Este es un experimento para generar dinámicamente una secuencia de introducción de apertura aleatoria para  <a href="http://voices.oeglobal.org/" target="_blank">podcast de OEG Voices</a> a partir de una colección de grabaciones compartidas por individuos, cada una dividida en 14 segmentos (modelados según el <a href="https://qz.com/298094/how-mailchimps-irresistible-serial-ad-became-the-years-biggest-marketing-win/">anuncio de Mailchimp para Serial</a>). ¿Quieres añadir tu voz a la mezcla?  <a href="https://connect.oeglobal.org/t/contribute-your-voice-to-oeg-voices-opening-segment/3213/" target="_blank"><i class="bi bi-mic-fill"></i> Grabe y agregue el suyo en OEG Connect</a>.</p>
+  
+  	<div  class="container-fluid text-center">
+  		<button type="button" class="btn btn-primary btn-lg" id="voicenew">Nuevo</button>
+  		<button type="button" class="btn btn-primary btn-lg hide" id="voiceplay"><i class="bi bi-play-circle"></i> Jugar
+		</button>
+ 
+   		<button type="button" class="btn btn-primary btn-lg hide" id="voicepause"><i class="bi bi-pause-circle-fill"></i> Pausa
+   		</button>
+   		
+   		<button type="button" class="btn btn-primary btn-lg hide" id="voiceshare"><i class="bi bi-share-fill"></i> Cuota
+		</button>
+ 		
+ 		<p id="speaking">Comienza haciendo una mezcla...</p>
+	</div>
+	
+  </div>
+	
+	<div id="main" class="container-fluid">
+	
+	<div id="credits"></div>
+	
+	<div id="mixlist" class="hide">
+		<details>
+		<summary>Para el mezclador</summary>
+		El texto a continuación se puede guardar en un archivo <code>voices.txt</code> y lo utiliza un maestro de mezclas que tiene todo el audio de origen (también conocido como @cogdog) para ejecutarlo a través de la línea de comandos. Tratar <a href="#" id="downloadmix" download="voices.txt"><i class="bi bi-download"></i> descargando una versión</a> y si funciona envíelo por correo electrónico, o una copia del texto a continuación, a <code>podcast@oeglobal.org</code> y lo usaremos en un episodio futuro. O use el botón de compartir de arriba para enviarnos un enlace para reproducirlo.<br /><br />
+
+
+
+
+		<pre id="voicelist"></pre>
+    
+	</details>
+	</div>
+
+	
+
+		
+	</div><!-- #main -->
+	
+		<div id="footer" class="container-fluid text-center">
+		<p>
+		<!-- background image attribution -->
+		
+		Logotipo de podcast de imagen de fondo de Mario Badilla mezclado con <a href="https://flickr.com/photos/cogdog/5560625860">2011/365/84 On The Air</a> foto de flickr por <a href="https://flickr.com/people/cogdog">cogdogblog</a> compartido bajo un <a href="https://creativecommons.org/licenses/by/2.0/">Licencia Creative Commons (BY)</a><br />
+		<!-- code credit, thanks for keeping -->
+		código por <a href="http://cog.dog/"> @cogdog</a> y <a href="https://github.com/cogdog/mixvoices">disponible en github</a>
+		</p>
+		<p id="namelist"></p>
+	</div>
+
+<!--  JavaScript libs 
+	  jQuery first, then Bootstrap JS, and finally Backstretch -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.backstretch.min.js"></script>
+    
+    <!-- custom scripts for the mix machine -->
+	<!-- Configuration scripts for this version   -->
+	<script defer src="js/config.js"></script>
+    <script defer src="js/mixvoices.js"></script>
+
+</body>
+</html>

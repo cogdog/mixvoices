@@ -1,4 +1,4 @@
-
+// Spanish Version -------------- //
 // backstrech the background image -->
  $.backstretch("background.jpg");
 
@@ -46,7 +46,7 @@ function getAllNames() {
 		allnames.push(people[m].name);
 	}
 	
-	$( "#namelist" ).html('<p>Thanks to all voice contributors <strong>' + allnames.sort().join("</strong>, <strong>") + '</strong></p>');
+	$( "#namelist" ).html('<p>Gracias a todos los contribuyentes <strong>' + allnames.sort().join("</strong>, <strong>") + '</strong></p>');
 }
 
 function getNameFromID (findit) {
@@ -68,7 +68,7 @@ function getReplayLink(idlist) {
 }
 
 function mixaudio(max) {
-	$( "#speaking" ).text('Mixing...');
+	$( "#speaking" ).text('Mezclando...');
 	// reset globals
 	voices = []; 
 	speakers = []; 
@@ -77,8 +77,8 @@ function mixaudio(max) {
 	let alltracks = [];
 	let track2 = [];
 	let credits = [];
-	let ffmpegtxt = '# OEG Voices Random Intro created ' + new Date() + "\n" + 
-					'# Run from directory containing \'audio\'' + "\n" + 
+	let ffmpegtxt = '# Introducción aleatoria de voces OEG creada ' + new Date() + "\n" + 
+					'# Ejecutar desde el directorio que contiene \'audio\'' + "\n" + 
 					'# ffmpeg -f concat -safe 0 -i voices.txt -c copy voicemix.mp3' + "\n";
 	paused = false;
 	speakers = [];
@@ -129,24 +129,25 @@ function mixaudio(max) {
 	}
 	
 	// append the credits to the download content
-	ffmpegtxt +=  '# Playback link: ' + getReplayLink(ids)   +  "\n" 
-				+ '# Voice credits: ' + credits.join(", ");
+	ffmpegtxt += '# Enlace de reproducción: ' + getReplayLink(ids)   +  "\n" 
+					+'# Créditos de voz: ' + credits.join(", ");
 		
-	$( "#credits" ).html('<h2>Voice Credits For This Mix</h2><p>' + credits.join(", ") + '</p>');
+	$( "#credits" ).html('<h2>Créditos de voz para esta mezcla</h2><p>' + credits.join(", ") + '</p>');
 	$( "#voicelist" ).text(ffmpegtxt);
 	$( "#downloadmix").attr("href", "data:text/plain;charset=UTF-8," + encodeURIComponent(ffmpegtxt));
-	$( "#speaking" ).html('Mix complete! Click <strong>Play</strong> to listen');
+	$( "#speaking" ).html('¡Mezcla completa! Haz clic en <strong>Reproducir</strong> para escuchar');
+
 	
 	return (alltracks);
 }
 
 function setUpReplay(max) {
 
-	$( "#speaking" ).text('Setting up playback...');
+	$( "#speaking" ).text('Configurando reproducción...');
 	let alltracks = [];
 	let credits = [];
-	let ffmpegtxt = '# OEG Voices Random Intro created ' + new Date() + "\n" + 
-					'# Run from directory containing \'audio\'' + "\n" + 
+	let ffmpegtxt = '# Introducción aleatoria de voces OEG creada ' + new Date() + "\n" + 
+					'# Ejecutar desde el directorio que contiene \'audio\'' + "\n" + 
 					'# ffmpeg -f concat -safe 0 -i voices.txt -c copy voicemix.mp3' + "\n";
 	paused = false;
 	speakers = [];
@@ -198,16 +199,16 @@ function setUpReplay(max) {
 				
 			ffmpegtxt += 'file \'' + 'audio/segment-'+ m + '/' + ids[idx] + '-' + m + ".mp3'\n";
 		}
-	}
-	
+	}		
 	// append the credits to the download content
-	ffmpegtxt += '# Playback link: ' + getReplayLink(ids)   +  "\n" 
-					+'# Voice credits: ' + credits.join(", ");
+	ffmpegtxt += '# Enlace de reproducción: ' + getReplayLink(ids)   +  "\n" 
+					+'# Créditos de voz: ' + credits.join(", ");
 		
-	$( "#credits" ).html('<h2>Voice Credits For This Mix</h2><p>' + credits.join(", ") + '</p>');
+	$( "#credits" ).html('<h2>Créditos de voz para esta mezcla</h2><p>' + credits.join(", ") + '</p>');
 	$( "#voicelist" ).text(ffmpegtxt);
 	$( "#downloadmix").attr("href", "data:text/plain;charset=UTF-8," + encodeURIComponent(ffmpegtxt));
-	$( "#speaking" ).html('Playlist loaded. Click <strong>Play</strong> to listen');
+	$( "#speaking" ).html('¡Mezcla completa! Haz clic en <strong>Reproducir</strong> para escuchar');
+
 
 	return (alltracks);
 
@@ -236,7 +237,7 @@ function getVoices( playmode='new' ) {
 	
 	
 	// change button name and show buttons
-	$("#voicenew").html('Make Another');
+	$("#voicenew").html('Mezclar de nuevo');
 	$("#voiceplay").show();
 	$("#voicepause").show();
 	$("#mixlist").show();
@@ -253,7 +254,7 @@ function playVoices() {
 	
 		sndx++;
 		if (sndx == voices.length) {
-			$("#speaking").html('Done! Mix another?');
+			$("#speaking").html('¡Hecho! ¿Mezclar otro?');
 			
 			// enable the play button
 			$( "#voiceplay" ).prop("disabled", false);
@@ -305,7 +306,7 @@ $(document).ready(function(){
 	
 	$( "#voiceshare" ).click(function() {
 		// Generate and play voices
-			prompt("Copy this link to share this voice mix", getReplayLink(ids));
+			prompt("Copie este enlace para compartir esta mezcla de voz", getReplayLink(ids));
 		
 	});	
 
