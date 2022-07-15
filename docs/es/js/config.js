@@ -2,8 +2,9 @@
 
 var people = [
 	{"id" : "marcela" , "name" : "Marcela M", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]}, 
-	{"id" : "jackie" , "name" : "Jackie B", "segments" : [1,2,3,4,5,6,7,8,9,10,13,14]}, 
-	{"id" : "gloria" , "name" : "Gloria T", "segments" : [1,2,3,4,5,6,7,8,9,10,13,14]},
+	{"id" : "jackie" , "name" : "Jackie B", "segments" : [1,2,3,4,5,6,7,8,9,10,11,13,14]}, 
+	{"id" : "gloria" , "name" : "Gloria T", "segments" : [1,2,3,4,5,6,7,8,9,10,11,13,14]},
+	{"id" : "mario" , "name" : "Mario B", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]}, 
 
 ];
 
@@ -20,8 +21,8 @@ var segment_text = [
 	"Para más información visite oeglobal.org",
 	"8 Hay mucho que aprender y asimilar a nivel mundial",
 	"Esperamos con estas charlas presentar un escenario de cómo está funcionando la educación abierta",
-	"al escuchar las historias y experiencias directamente de quienes lo practican",
-	"contadas desde su propia voz",
+	"al escuchar las historias y experiencias",
+	"directamente de quienes lo practican",
 	"Cada episodio presenta a un educador o educadora de educación abierta global",
 	"posteriormente los invitamos a conversar con ellos",
 	"en nuestra comunidad OEG Connect"
