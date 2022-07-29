@@ -26,6 +26,9 @@ var people = [
 	{"id" : "gino" , "name" : "Gino F", "segments" : [1,2,3,4,6,7]},
 	{"id" : "werner" , "name" : "Werner W", "segments" : [8,9,10,11,12,13,14]},
 	{"id" : "bonni" , "name" : "Bonni S", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
+	{"id" : "patrina" , "name" : "Patrina L", "segments" : [1,2,3,4,6,7]},
+	{"id" : "andy" , "name" : "Andy L", "segments" : [8,9,10,11,12,13,14]},
+	{"id" : "gardner" , "name" : "Gardner C", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]}
 ];
 
 // the text for each segment, will be displayed under speakers name as it plays
