@@ -46,7 +46,7 @@ function getAllNames() {
 		allnames.push(people[m].name);
 	}
 	
-	$( "#namelist" ).html('<p>Gracias a todos los contribuyentes <strong>' + allnames.sort().join("</strong>, <strong>") + '</strong></p>');
+	$( "#namelist" ).html('<p>Gracias a nuestros ' + allnames.length +  ' contribuyentes de voz: <strong>' + allnames.sort().join("</strong>, <strong>") + '</strong></p>');
 }
 
 function getNameFromID (findit) {
