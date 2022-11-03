@@ -46,3 +46,7 @@ summary em {
 	font-size: 80%;
 	float: right;
 }
+
+.backstretch {
+	opacity: 0.6;
+}
