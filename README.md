@@ -10,9 +10,7 @@ To skip all the explanation, just explore it at https://cogdog.github.io/mixvoic
 
 This was created as a small bit for the [OEG Voices Podcast](https://voices.oeglobal.org/) I manage and produce for Open Education Global. I have had this idea for a long time to create of those [audio mixes popularized in the Mailchimp ads for the Serial Podcast](https://qz.com/298094/how-mailchimps-irresistible-serial-ad-became-the-years-biggest-marketing-win/).
 
-I ended up writing he text and asking my colleagues at OEGlobal to record their version, and I manually edited it together. [This was the opening](https://podcast.oeglobal.org/wp-content/uploads/2020/08/oeg-voices-intro-v2.mp3) used for the first year and a half of the show.
-
-
+I ended up writing the text and asking my colleagues at OEGlobal to record their version, and I manually edited it together. [This was the opening](https://podcast.oeglobal.org/wp-content/uploads/2020/08/oeg-voices-intro-v2.mp3) used for the first year and a half of the show.
 
 This was fine, but I always wanted to do something... more dynamic and random. I put out [a call in our community space asking for people to record the segment](https://connect.oeglobal.org/t/contribute-your-voice-to-oeg-voices-opening-segment/3213) and share it with me (reply there or via email). This is the source content
 
@@ -67,8 +65,12 @@ I am loading everything script and css wise from CDNs, at least for now, in the 
 
 ## What Else?
 
-Nothing, but I hate skimpy or dull ReadMes. You be the judge. But to follo all  action or toss one in your self, [click over to OEG Connect](https://connect.oeglobal.org/t/contribute-your-voice-to-oeg-voices-opening-segment/3213)
-*
+Nothing, but I hate skimpy or dull ReadMes. You be the judge. But to follow all action or toss one in your self, [click over to OEG Connect](https://connect.oeglobal.org/t/contribute-your-voice-to-oeg-voices-opening-segment/3213)
+
+## Build Your Own 
+This repo is very particular to my own uses! I have created [a generic version](https://github.com/cogdog/voicemixer) that is perhaps more suitable for forking and building your own voice mixers. 
+
+You can even see it in action via https://cogdog.github.io/voicemixer/ a rather droll mix of computer voices reading an Emily Dickinson poem. I would think *you* can do something more clever!
 
 
 
