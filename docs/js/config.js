@@ -19,6 +19,7 @@ var people = [
 	{"id" : "isla" , "name" : "Isla H-F", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
 	{"id" : "jonathan" , "name" : "Jonathan P", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
 	{"id" : "joran" , "name" : "Jöran M-M", "segments" : [8,9,10,11,12,13,14]},
+	{"id" : "jozefa" , "name" : "Józefa F", "segments" : [1,2,3]},
 	{"id" : "judith" , "name" : "Judith S", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
 	{"id" : "kevin" , "name" : "Kevin H", "segments" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]},
 	{"id" : "kristin" , "name" : "Kristin H", "segments" : [2,3,4,5,6,7]},
